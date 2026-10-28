@@ -220,7 +220,8 @@ interface RuneStyleFile {
 function iconsOf(match: RiotMatchDto, catalog: DataDragonCatalog): Icon[] {
   const participants = match.info.participants;
   const version = catalog.version;
-  const champions = uniqueValues(participants.map((p) => catalog.championKeyById.get(p.championId)).filter((key): key is string => key !== undefined));
+  const championIds = [...participants.map((p) => p.championId), ...match.info.teams.flatMap((team) => team.bans.map((ban) => ban.championId).filter((id) => id > 0))];
+  const champions = uniqueValues(championIds.map((id) => catalog.championKeyById.get(id)).filter((key): key is string => key !== undefined));
   const items = uniqueValues(participants.flatMap((p) => [p.item0, p.item1, p.item2, p.item3, p.item4, p.item5, p.item6]).filter((id) => id > 0));
   const spells = uniqueValues(participants.flatMap((p) => [p.spell1Id, p.spell2Id]).filter((id) => id > 0));
   const runes = uniqueValues(participants.flatMap((p) => p.perks.styles.flatMap((style) => [style.style, ...style.selections.map((s) => s.perk)])));
