@@ -1829,7 +1829,25 @@
     "teamBye": "BYE",
     "discussion": "Tartışma",
     "watchparty": "Watchparty",
-    "vodGame": "Oyun {n} VOD"
+    "vodGame": "Oyun {n} VOD",
+    "games": "Oyunlar",
+    "gameTab": "Oyun {order}",
+    "noGames": "Henüz kayıtlı oyun yok.",
+    "duration": "Süre",
+    "forfeit": "Teslim",
+    "towers": "Kuleler",
+    "inhibitors": "İnhibitörler",
+    "dragons": "Ejderhalar",
+    "barons": "Baronlar",
+    "heralds": "Heraldlar",
+    "grubs": "Boşluk kurtçukları",
+    "draftNotSet": "Bu oyun için kayıtlı draft yok.",
+    "ban": "Ban",
+    "pick": "Pick",
+    "unplacedPicks": "Yerleştirilmemiş pickler",
+    "colChampion": "Şampiyon",
+    "allGames": "Tüm oyunlar",
+    "draft": "Draft"
   },
   "footer": {
     "tagline": "Tüm resmi Game Changers yarışmaları, tek bir yerde.",
@@ -6692,7 +6710,8 @@
     "copied": "Kopyalandı",
     "copyError": "Görsel kopyalanamadı. Bunun yerine indir.",
     "exporting": "Oluşturuluyor",
-    "exportError": "Görsel oluşturulamadı. Tekrar dene."
+    "exportError": "Görsel oluşturulamadı. Tekrar dene.",
+    "descriptionGames": "Genişliği {width} px olan PNG görsel, paylaşıma hazır. Tüm oyunları veya tek bir oyunu seçin."
   },
   "share": {
     "button": "Paylaş",

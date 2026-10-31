@@ -1829,7 +1829,25 @@
     "teamBye": "BYE",
     "discussion": "토론",
     "watchparty": "워치파티",
-    "vodGame": "게임 {n} VOD"
+    "vodGame": "게임 {n} VOD",
+    "games": "게임",
+    "gameTab": "게임 {order}",
+    "noGames": "아직 기록된 게임이 없습니다.",
+    "duration": "경기 시간",
+    "forfeit": "기권",
+    "towers": "포탑",
+    "inhibitors": "억제기",
+    "dragons": "드래곤",
+    "barons": "바론",
+    "heralds": "전령",
+    "grubs": "공허 유충",
+    "draftNotSet": "이 게임의 밴픽 기록이 없습니다.",
+    "ban": "밴",
+    "pick": "픽",
+    "unplacedPicks": "배치되지 않은 픽",
+    "colChampion": "챔피언",
+    "allGames": "모든 게임",
+    "draft": "드래프트"
   },
   "footer": {
     "tagline": "모든 공식 Game Changers 대회를 한곳에서 만나보세요.",
@@ -6692,7 +6710,8 @@
     "copied": "복사됨",
     "copyError": "이미지를 복사하지 못했습니다. 대신 다운로드해 주세요.",
     "exporting": "생성 중",
-    "exportError": "이미지를 생성하지 못했습니다. 다시 시도해 주세요."
+    "exportError": "이미지를 생성하지 못했습니다. 다시 시도해 주세요.",
+    "descriptionGames": "PNG 이미지 (너비 {width} px), 공유할 준비가 되었습니다. 모든 게임 또는 한 게임을 선택하세요."
   },
   "share": {
     "button": "공유",

@@ -1831,7 +1831,25 @@
     "teamBye": "BYE",
     "discussion": "Discussion",
     "watchparty": "Watchparty",
-    "vodGame": "Game {n} VOD"
+    "vodGame": "Game {n} VOD",
+    "games": "Games",
+    "gameTab": "Game {order}",
+    "noGames": "No games recorded yet.",
+    "duration": "Duration",
+    "forfeit": "Forfeit",
+    "towers": "Towers",
+    "inhibitors": "Inhibitors",
+    "dragons": "Dragons",
+    "barons": "Barons",
+    "heralds": "Rift Heralds",
+    "grubs": "Void grubs",
+    "draftNotSet": "No draft recorded for this game.",
+    "ban": "Ban",
+    "pick": "Pick",
+    "unplacedPicks": "Picks not placed yet",
+    "colChampion": "Champion",
+    "allGames": "All games",
+    "draft": "Draft"
   },
   "footer": {
     "tagline": "Every official Game Changers competition, in one place.",
@@ -6816,7 +6834,8 @@
     "copied": "Copied",
     "copyError": "The image could not be copied. Download it instead.",
     "exporting": "Generating",
-    "exportError": "The image could not be generated. Try again."
+    "exportError": "The image could not be generated. Try again.",
+    "descriptionGames": "PNG image {width} px wide, ready to share. Choose all games or a single game."
   },
   "share": {
     "button": "Share",

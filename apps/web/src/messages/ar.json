@@ -1829,7 +1829,25 @@
     "teamBye": "BYE",
     "discussion": "النقاش",
     "watchparty": "Watchparty",
-    "vodGame": "تسجيل اللعبة {n}"
+    "vodGame": "تسجيل اللعبة {n}",
+    "games": "المباريات",
+    "gameTab": "المباراة {order}",
+    "noGames": "لم تُسجَّل أي مباريات بعد.",
+    "duration": "المدة",
+    "forfeit": "انسحاب",
+    "towers": "الأبراج",
+    "inhibitors": "المثبطات",
+    "dragons": "التنانين",
+    "barons": "البارونات",
+    "heralds": "رائد الشق",
+    "grubs": "يرقات الفراغ",
+    "draftNotSet": "لم يُسجَّل اختيار الأبطال لهذه المباراة.",
+    "ban": "حظر",
+    "pick": "اختيار",
+    "unplacedPicks": "اختيارات لم تُوضع بعد",
+    "colChampion": "البطل",
+    "allGames": "كل المباريات",
+    "draft": "المسودة"
   },
   "footer": {
     "tagline": "كل مسابقات Game Changers الرسمية في مكان واحد.",
@@ -6692,7 +6710,8 @@
     "copied": "تم النسخ",
     "copyError": "تعذر نسخ الصورة. نزّلها بدلاً من ذلك.",
     "exporting": "جارٍ الإنشاء",
-    "exportError": "تعذر إنشاء الصورة. حاول مرة أخرى."
+    "exportError": "تعذر إنشاء الصورة. حاول مرة أخرى.",
+    "descriptionGames": "صورة PNG بعرض {width} بكسل، جاهزة للمشاركة. اختر كل المباريات أو مباراة واحدة."
   },
   "share": {
     "button": "مشاركة",

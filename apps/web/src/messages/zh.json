@@ -1829,7 +1829,25 @@
     "teamBye": "轮空",
     "discussion": "讨论",
     "watchparty": "观赛派对",
-    "vodGame": "对局 {n} 录像"
+    "vodGame": "对局 {n} 录像",
+    "games": "对局",
+    "gameTab": "第 {order} 局",
+    "noGames": "尚无已记录的对局。",
+    "duration": "时长",
+    "forfeit": "投降",
+    "towers": "防御塔",
+    "inhibitors": "抑制器",
+    "dragons": "小龙",
+    "barons": "大龙",
+    "heralds": "峡谷先锋",
+    "grubs": "虚空幼虫",
+    "draftNotSet": "本局未记录英雄选择。",
+    "ban": "禁用",
+    "pick": "选用",
+    "unplacedPicks": "未放置的选用",
+    "colChampion": "英雄",
+    "allGames": "全部对局",
+    "draft": "选人"
   },
   "footer": {
     "tagline": "汇聚所有官方 Game Changers 赛事。",
@@ -6692,7 +6710,8 @@
     "copied": "已复制",
     "copyError": "无法复制图片，请改为下载。",
     "exporting": "生成中",
-    "exportError": "无法生成图片，请重试。"
+    "exportError": "无法生成图片，请重试。",
+    "descriptionGames": "PNG 图片，宽 {width} 像素，可直接分享。选择全部对局或单局。"
   },
   "share": {
     "button": "分享",

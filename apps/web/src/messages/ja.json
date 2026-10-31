@@ -1829,7 +1829,25 @@
     "teamBye": "BYE",
     "discussion": "ディスカッション",
     "watchparty": "ウォッチパーティー",
-    "vodGame": "ゲーム{n}のVOD"
+    "vodGame": "ゲーム{n}のVOD",
+    "games": "ゲーム",
+    "gameTab": "ゲーム {order}",
+    "noGames": "まだゲームが記録されていません。",
+    "duration": "試合時間",
+    "forfeit": "棄権",
+    "towers": "タワー",
+    "inhibitors": "インヒビター",
+    "dragons": "ドラゴン",
+    "barons": "バロン",
+    "heralds": "リフトヘラルド",
+    "grubs": "ヴォイドグラブ",
+    "draftNotSet": "このゲームのドラフトは記録されていません。",
+    "ban": "BAN",
+    "pick": "PICK",
+    "unplacedPicks": "未配置のピック",
+    "colChampion": "チャンピオン",
+    "allGames": "全ゲーム",
+    "draft": "ドラフト"
   },
   "footer": {
     "tagline": "すべての公式Game Changers大会を、ここに集約。",
@@ -6692,7 +6710,8 @@
     "copied": "コピーしました",
     "copyError": "画像をコピーできませんでした。代わりにダウンロードしてください。",
     "exporting": "生成中",
-    "exportError": "画像を生成できませんでした。もう一度お試しください。"
+    "exportError": "画像を生成できませんでした。もう一度お試しください。",
+    "descriptionGames": "PNG画像（幅 {width} px）、共有の準備完了。全ゲームまたは1ゲームを選択してください。"
   },
   "share": {
     "button": "共有",

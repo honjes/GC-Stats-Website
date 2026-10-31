@@ -1,0 +1,88 @@
+/**
+ * GC-Stats - lol-objective-strip
+ *
+ * One team's objectives in a game, in a row: the towers, barons, heralds and void grubs with their counts, and one icon
+ * per dragon in the order they were taken. Shown under the team names of a game's scoreboard. The icons are the artwork
+ * in public/lol/scoreboard; a dragon of unknown type shows the generic one.
+ *
+ * @copyright Copyright (c) 2026 Osthelia - GC-Stats-Website
+ * @license   https://github.com/Osthelia/GC-Stats-Website/blob/main/LICENSE.md Osthelia License v1.0
+ * @link      https://github.com/Osthelia/GC-Stats-Website
+ */
+
+"use client";
+
+import { useTranslations } from "next-intl";
+import type { LeagueGameObjectives } from "@/lib/match-league-games";
+
+type CountedKind = "towers" | "barons" | "heralds" | "grubs";
+
+const SCOREBOARD = "/lol/scoreboard";
+
+const IMAGES: Record<CountedKind, string> = {
+  towers: `${SCOREBOARD}/tower.webp`,
+  barons: `${SCOREBOARD}/baronnashor.webp`,
+  heralds: `${SCOREBOARD}/riftherald.webp`,
+  grubs: `${SCOREBOARD}/grub.webp`,
+};
+
+/** The name and artwork of each dragon type, as Riot names them. */
+const DRAGONS: Record<string, { name: string; image: string }> = {
+  FIRE_DRAGON: { name: "Infernal Drake", image: `${SCOREBOARD}/infernaldrake.webp` },
+  EARTH_DRAGON: { name: "Mountain Drake", image: `${SCOREBOARD}/mountaindrake.webp` },
+  WATER_DRAGON: { name: "Ocean Drake", image: `${SCOREBOARD}/oceandrake.webp` },
+  AIR_DRAGON: { name: "Cloud Drake", image: `${SCOREBOARD}/clouddrake.webp` },
+  CHEMTECH_DRAGON: { name: "Chemtech Drake", image: `${SCOREBOARD}/chemtechdrake.webp` },
+  HEXTECH_DRAGON: { name: "Hextech Drake", image: `${SCOREBOARD}/hextechdrake.webp` },
+  ELDER_DRAGON: { name: "Elder Dragon", image: `${SCOREBOARD}/elderdrake.webp` },
+};
+const GENERIC_DRAGON = `${SCOREBOARD}/dragon.webp`;
+
+const COUNTED: CountedKind[] = ["grubs", "heralds", "barons", "towers"];
+
+/** Room for the most dragons a team takes in a game, so the other counts stay in place as the dragons change. */
+const DRAGON_SLOTS = 6;
+const DRAGON_GAP = 4;
+
+/** The name and artwork of a dragon; a dragon of unknown type (null) gets the generic artwork and no name. */
+function dragonOf(dragon: string | null): { name: string | null; image: string } {
+  const known = dragon === null ? undefined : DRAGONS[dragon];
+  return { name: known?.name ?? null, image: known?.image ?? GENERIC_DRAGON };
+}
+
+function ObjectiveIcon({ src, size, alt, title }: { src: string; size: number; alt: string; title?: string }) {
+  return <img src={src} alt={alt} title={title} width={size} height={size} className="flex-none" />;
+}
+
+/**
+ * `mirrored` is the right team's strip: its items run in reverse, so the dragons sit next to the centre line, as the
+ * stats do in the rows below.
+ */
+export function LolObjectiveStrip({ objectives, tone, size, mirrored = false }: { objectives: LeagueGameObjectives | undefined; tone: string; size: number; mirrored?: boolean }) {
+  const t = useTranslations("matchPage");
+  const dragons = objectives?.dragonTypes ?? [];
+  const dragonsItem = (
+    <div
+      key="dragons"
+      role="group"
+      aria-label={t("dragons")}
+      className={`flex items-center gap-1 ${mirrored ? "justify-end" : "justify-start"}`}
+      style={{ minWidth: DRAGON_SLOTS * size + (DRAGON_SLOTS - 1) * DRAGON_GAP }}
+    >
+      {dragons.length === 0 && <span className="font-mono font-bold">0</span>}
+      {(mirrored ? [...dragons].reverse() : dragons).map((dragon, i) => {
+        const { name, image } = dragonOf(dragon);
+        const label = name ?? t("dragons");
+        return <ObjectiveIcon key={i} src={image} size={size} alt={label} title={label} />;
+      })}
+    </div>
+  );
+  const countedItems = COUNTED.map((kind) => (
+    <div key={kind} className="flex items-center gap-2 font-mono font-bold" title={t(kind)}>
+      <ObjectiveIcon src={IMAGES[kind]} size={size} alt={t(kind)} />
+      <span className="tabular-nums">{objectives?.[kind] ?? 0}</span>
+    </div>
+  ));
+  const items = [dragonsItem, ...countedItems];
+  return <div className={`flex items-center justify-around gap-2 ${tone}`}>{mirrored ? items.reverse() : items}</div>;
+}

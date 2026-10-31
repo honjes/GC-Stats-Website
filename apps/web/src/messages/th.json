@@ -1829,7 +1829,25 @@
     "teamBye": "BYE",
     "discussion": "การสนทนา",
     "watchparty": "Watchparty",
-    "vodGame": "VOD เกม {n}"
+    "vodGame": "VOD เกม {n}",
+    "games": "เกม",
+    "gameTab": "เกม {order}",
+    "noGames": "ยังไม่มีการบันทึกเกม",
+    "duration": "ระยะเวลา",
+    "forfeit": "ยอมแพ้",
+    "towers": "ป้อม",
+    "inhibitors": "อินฮิบิเตอร์",
+    "dragons": "ดราก้อน",
+    "barons": "บารอน",
+    "heralds": "เฮรัลด์",
+    "grubs": "วอยด์กรับ",
+    "draftNotSet": "ยังไม่มีการบันทึกดราฟต์ของเกมนี้",
+    "ban": "แบน",
+    "pick": "พิก",
+    "unplacedPicks": "พิกที่ยังไม่ได้วาง",
+    "colChampion": "แชมป์",
+    "allGames": "ทุกเกม",
+    "draft": "ดราฟต์"
   },
   "footer": {
     "tagline": "ทุกการแข่งขัน Game Changers อย่างเป็นทางการ ในที่เดียว",
@@ -6692,7 +6710,8 @@
     "copied": "คัดลอกแล้ว",
     "copyError": "ไม่สามารถคัดลอกรูปภาพได้ ลองดาวน์โหลดแทน",
     "exporting": "กำลังสร้าง",
-    "exportError": "ไม่สามารถสร้างรูปภาพได้ ลองอีกครั้ง"
+    "exportError": "ไม่สามารถสร้างรูปภาพได้ ลองอีกครั้ง",
+    "descriptionGames": "ภาพ PNG กว้าง {width} px พร้อมแชร์ เลือกทุกเกมหรือเกมเดียว"
   },
   "share": {
     "button": "แชร์",

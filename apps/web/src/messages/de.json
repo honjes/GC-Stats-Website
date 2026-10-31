@@ -1829,7 +1829,25 @@
     "teamBye": "Freilos",
     "discussion": "Diskussion",
     "watchparty": "Watchparty",
-    "vodGame": "VOD Spiel {n}"
+    "vodGame": "VOD Spiel {n}",
+    "games": "Spiele",
+    "gameTab": "Spiel {order}",
+    "noGames": "Noch keine Spiele erfasst.",
+    "duration": "Dauer",
+    "forfeit": "Forfeit",
+    "towers": "Türme",
+    "inhibitors": "Inhibitoren",
+    "dragons": "Drachen",
+    "barons": "Barone",
+    "heralds": "Riftherold",
+    "grubs": "Leerenlarven",
+    "draftNotSet": "Für dieses Spiel ist kein Draft erfasst.",
+    "ban": "Ban",
+    "pick": "Pick",
+    "unplacedPicks": "Picks noch nicht zugeordnet",
+    "colChampion": "Champion",
+    "allGames": "Alle Spiele",
+    "draft": "Draft"
   },
   "footer": {
     "tagline": "Jeder offizielle Game Changers Wettbewerb, an einem Ort.",
@@ -6692,7 +6710,8 @@
     "copied": "Kopiert",
     "copyError": "Das Bild konnte nicht kopiert werden. Lade es stattdessen herunter.",
     "exporting": "Wird erstellt",
-    "exportError": "Das Bild konnte nicht erstellt werden. Versuche es erneut."
+    "exportError": "Das Bild konnte nicht erstellt werden. Versuche es erneut.",
+    "descriptionGames": "PNG-Bild, {width} px breit, bereit zum Teilen. Wähle alle Spiele oder ein einzelnes Spiel."
   },
   "share": {
     "button": "Teilen",

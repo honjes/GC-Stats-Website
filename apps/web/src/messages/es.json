@@ -1831,7 +1831,25 @@
     "teamBye": "BYE",
     "discussion": "Discusión",
     "watchparty": "Watchparty",
-    "vodGame": "VOD de la partida {n}"
+    "vodGame": "VOD de la partida {n}",
+    "games": "Partidas",
+    "gameTab": "Partida {order}",
+    "noGames": "Aún no hay partidas registradas.",
+    "duration": "Duración",
+    "forfeit": "Rendición",
+    "towers": "Torres",
+    "inhibitors": "Inhibidores",
+    "dragons": "Dragones",
+    "barons": "Barones",
+    "heralds": "Heraldos",
+    "grubs": "Larvas del Vacío",
+    "draftNotSet": "No hay selección registrada para esta partida.",
+    "ban": "Ban",
+    "pick": "Pick",
+    "unplacedPicks": "Picks sin colocar",
+    "colChampion": "Campeón",
+    "allGames": "Todas las partidas",
+    "draft": "Draft"
   },
   "footer": {
     "tagline": "Todas las competiciones oficiales de Game Changers, en un solo lugar.",
@@ -6816,7 +6834,8 @@
     "copied": "Copiado",
     "copyError": "No se pudo copiar la imagen. Descárgala en su lugar.",
     "exporting": "Generando",
-    "exportError": "No se pudo generar la imagen. Inténtalo de nuevo."
+    "exportError": "No se pudo generar la imagen. Inténtalo de nuevo.",
+    "descriptionGames": "Imagen PNG de {width} px de ancho, lista para compartir. Elige todas las partidas o una sola."
   },
   "share": {
     "button": "Compartir",

@@ -128,12 +128,59 @@ async function fallbackFromDatabase(patch: string): Promise<DataDragonCatalog | 
   return version === null ? null : loadStored(version);
 }
 
-/** Picks Champion names from given patch. if none is given from the newest Patch */
-export async function getChampionNamesForPatch(patch: string | null): Promise<string[]> {
+async function storedCatalogForPatch(patch: string | null): Promise<DataDragonCatalog | null> {
+  const inMemory = patch === null ? null : fromMemory(patch);
+  if (inMemory) return inMemory;
   const stored = await storedVersions();
   const version = patch === null ? newestVersion(stored) : pickStoredVersion(stored, patch);
-  const catalog = version === null ? null : await loadStored(version);
+  if (version === null) return null;
+  return loaded.get(version) ?? loadStored(version);
+}
+
+/** Picks Champion names from given patch. if none is given from the newest Patch */
+export async function getChampionNamesForPatch(patch: string | null): Promise<string[]> {
+  const catalog = await storedCatalogForPatch(patch);
   return catalog ? [...catalog.championNameById.values()].sort((a, b) => a.localeCompare(b)) : [];
+}
+
+
+interface RuneNameFile {
+  id: number;
+  name: string;
+  slots: { runes: { id: number; name: string }[] }[];
+}
+
+/** Rune ids (trees and perks) to their names. A Data Dragon version never changes, so each one is read once. */
+const runeNamesByVersion = new Map<string, Record<string, string>>();
+
+async function runeNamesOf(version: string): Promise<Record<string, string>> {
+  const known = runeNamesByVersion.get(version);
+  if (known) return known;
+  const styles = await getJson<RuneNameFile[]>(`${CDN}/${version}/data/${LOCALE}/runesReforged.json`).catch(iconSourceFailure);
+  if (!styles) return {};
+  const names: Record<string, string> = {};
+  for (const style of styles) {
+    names[String(style.id)] = style.name;
+    for (const slot of style.slots) for (const rune of slot.runes) names[String(rune.id)] = rune.name;
+  }
+  runeNamesByVersion.set(version, names);
+  return names;
+}
+
+export interface DisplayCatalog {
+  championIconKeys: Record<string, string>;
+  itemNames: Record<string, string>;
+  runeNames: Record<string, string>;
+}
+
+export async function getDisplayCatalog(patch: string | null): Promise<DisplayCatalog> {
+  const catalog = await storedCatalogForPatch(patch);
+  if (!catalog) return { championIconKeys: {}, itemNames: {}, runeNames: {} };
+  return {
+    championIconKeys: Object.fromEntries([...catalog.championNameById].map(([id, name]) => [name, catalog.championKeyById.get(id) ?? name])),
+    itemNames: Object.fromEntries([...catalog.itemNameById].map(([id, name]) => [String(id), name])),
+    runeNames: await runeNamesOf(catalog.version),
+  };
 }
 
 async function storedVersions(): Promise<string[]> {
