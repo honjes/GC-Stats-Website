@@ -935,7 +935,7 @@ export type ValorantOnlyTables = ReturnType<typeof defineValorantTables>;
 // League of Legends only: one row per game of a series, and what happened in it. Match-V5
 // (Riot) fills them on import; games entered by hand only get the `lol_games` row.
 export function defineLeagueTables(g: GameTables<"lol">) {
-  const { matches, entrants, tournaments } = g;
+  const { matches, entrants, tournaments, teams } = g;
 
   // --- Games (one per game of a best-of-N series, the LoL counterpart of val_maps) -------
   const games = pgTable("lol_games", {
@@ -1104,6 +1104,13 @@ export function defineLeagueTables(g: GameTables<"lol">) {
     check("lol_leaguepedia_games_winner_check", sql`${t.winner} IN (1, 2)`),
   ]);
 
+  const leaguepediaTeamNames = pgTable("lol_leaguepedia_team_names", {
+    id: bigserial("id", { mode: "number" }).primaryKey(),
+    teamId: bigint("team_id", { mode: "number" }).notNull().unique().references(() => teams.id, { onDelete: "cascade" }),
+    name: text("name").notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  }, (t) => [uniqueIndex("lol_leaguepedia_team_names_name_lower_unique").on(sql`lower(${t.name})`)]);
+
   // --- Data Dragon catalog (champion and item names per version) ---------------------------
   // A Data Dragon version never changes once published, so a stored row is never fetched again. Imports read
   // the names from here, so they do not depend on Data Dragon being reachable at import time.
@@ -1115,7 +1122,7 @@ export function defineLeagueTables(g: GameTables<"lol">) {
     fetchedAt: timestamp("fetched_at", { withTimezone: true }).notNull().defaultNow(),
   });
 
-  return { games, gamePlayerStats, gameTeamStats, gameDraft, gameFramesRaw, gameEventsRaw, leaguepediaTournaments, leaguepediaGames, dataDragonCatalogs };
+  return { games, gamePlayerStats, gameTeamStats, gameDraft, gameFramesRaw, gameEventsRaw, leaguepediaTournaments, leaguepediaGames, leaguepediaTeamNames, dataDragonCatalogs };
 }
 
 export type LeagueOnlyTables = ReturnType<typeof defineLeagueTables>;
@@ -1232,6 +1239,7 @@ export const lolGameEventsRaw = leagueOnly.gameEventsRaw;
 export const lolGameDraft = leagueOnly.gameDraft;
 export const lolLeaguepediaTournaments = leagueOnly.leaguepediaTournaments;
 export const lolLeaguepediaGames = leagueOnly.leaguepediaGames;
+export const lolLeaguepediaTeamNames = leagueOnly.leaguepediaTeamNames;
 export const lolDataDragonCatalogs = leagueOnly.dataDragonCatalogs;
 
 export const valorantTables: GameTables & ValorantOnlyTables = { ...val, ...valorantOnly };

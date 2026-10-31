@@ -169,6 +169,17 @@ CREATE TABLE "lol_leaguepedia_games" (
 );
 --> statement-breakpoint
 CREATE INDEX "lol_leaguepedia_games_tournament_id_idx" ON "lol_leaguepedia_games" USING btree ("tournament_id");--> statement-breakpoint
+-- Leaguepedia team name <-> team, one to one like the Liquipedia names: learned when an imported game is saved, used to suggest the sides.
+CREATE TABLE "lol_leaguepedia_team_names" (
+	"id" bigserial PRIMARY KEY NOT NULL,
+	"team_id" bigint NOT NULL,
+	"name" text NOT NULL,
+	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
+	CONSTRAINT "lol_leaguepedia_team_names_team_id_unique" UNIQUE("team_id"),
+	CONSTRAINT "lol_leaguepedia_team_names_team_id_lol_teams_id_fk" FOREIGN KEY ("team_id") REFERENCES "public"."lol_teams"("id") ON DELETE cascade ON UPDATE no action
+);
+--> statement-breakpoint
+CREATE UNIQUE INDEX "lol_leaguepedia_team_names_name_lower_unique" ON "lol_leaguepedia_team_names" USING btree (lower("name"));--> statement-breakpoint
 -- Stored by the LoL import and the Data Dragon catalog; not tied to a game, so no foreign keys.
 CREATE TABLE "external_api_sessions" (
 	"service" text PRIMARY KEY NOT NULL,
