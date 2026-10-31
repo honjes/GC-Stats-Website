@@ -1833,6 +1833,7 @@
     "games": "Oyunlar",
     "gameTab": "Oyun {order}",
     "noGames": "Henüz kayıtlı oyun yok.",
+    "noGameData": "Bu oyun için veri yok",
     "duration": "Süre",
     "forfeit": "Teslim",
     "towers": "Kuleler",

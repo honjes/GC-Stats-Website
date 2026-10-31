@@ -231,7 +231,9 @@ export function LeagueScoreboard({
   return (
     <div className={`w-full overflow-hidden rounded-2xl border border-neutral-800 bg-(--gcs-surface-2) ${look.text}`}>
       {header}
-      {look.interactive ? (
+      {rowCount === 0 ? (
+        <p className="px-4 py-6 text-center text-neutral-400">{t("noGameData")}</p>
+      ) : look.interactive ? (
         <div className="no-scrollbar w-full overflow-x-auto">
           <div className="min-w-7xl">{body}</div>
         </div>

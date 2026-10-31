@@ -1835,6 +1835,7 @@
     "games": "Parties",
     "gameTab": "Partie {order}",
     "noGames": "Aucune partie enregistrée pour l'instant.",
+    "noGameData": "Aucune donnée pour cette partie",
     "duration": "Durée",
     "forfeit": "Forfait",
     "towers": "Tours",

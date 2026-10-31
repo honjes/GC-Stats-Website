@@ -1835,6 +1835,7 @@
     "games": "Partidas",
     "gameTab": "Partida {order}",
     "noGames": "Aún no hay partidas registradas.",
+    "noGameData": "No hay datos para esta partida",
     "duration": "Duración",
     "forfeit": "Rendición",
     "towers": "Torres",

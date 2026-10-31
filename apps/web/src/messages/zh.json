@@ -1833,6 +1833,7 @@
     "games": "对局",
     "gameTab": "第 {order} 局",
     "noGames": "尚无已记录的对局。",
+    "noGameData": "该场比赛没有数据",
     "duration": "时长",
     "forfeit": "投降",
     "towers": "防御塔",

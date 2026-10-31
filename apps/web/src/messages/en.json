@@ -1835,6 +1835,7 @@
     "games": "Games",
     "gameTab": "Game {order}",
     "noGames": "No games recorded yet.",
+    "noGameData": "No data for this game",
     "duration": "Duration",
     "forfeit": "Forfeit",
     "towers": "Towers",

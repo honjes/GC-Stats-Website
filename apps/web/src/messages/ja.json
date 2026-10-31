@@ -1833,6 +1833,7 @@
     "games": "ゲーム",
     "gameTab": "ゲーム {order}",
     "noGames": "まだゲームが記録されていません。",
+    "noGameData": "この試合のデータはありません",
     "duration": "試合時間",
     "forfeit": "棄権",
     "towers": "タワー",

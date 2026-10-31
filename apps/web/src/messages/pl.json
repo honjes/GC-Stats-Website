@@ -1833,6 +1833,7 @@
     "games": "Gry",
     "gameTab": "Gra {order}",
     "noGames": "Nie zarejestrowano jeszcze żadnych gier.",
+    "noGameData": "Brak danych dla tej gry",
     "duration": "Czas trwania",
     "forfeit": "Poddanie",
     "towers": "Wieże",

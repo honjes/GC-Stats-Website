@@ -1833,6 +1833,7 @@
     "games": "Spiele",
     "gameTab": "Spiel {order}",
     "noGames": "Noch keine Spiele erfasst.",
+    "noGameData": "Keine Daten für dieses Spiel",
     "duration": "Dauer",
     "forfeit": "Forfeit",
     "towers": "Türme",

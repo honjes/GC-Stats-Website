@@ -1833,6 +1833,7 @@
     "games": "게임",
     "gameTab": "게임 {order}",
     "noGames": "아직 기록된 게임이 없습니다.",
+    "noGameData": "이 게임의 데이터가 없습니다",
     "duration": "경기 시간",
     "forfeit": "기권",
     "towers": "포탑",
