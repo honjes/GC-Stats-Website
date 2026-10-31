@@ -130,6 +130,7 @@ CREATE TABLE "lol_game_team_stats" (
 	"first_blood" boolean DEFAULT false NOT NULL,
 	"first_tower" boolean DEFAULT false NOT NULL,
 	"objective_timings" jsonb DEFAULT '{}'::jsonb NOT NULL,
+	"dragon_types" text[],
 	CONSTRAINT "lol_game_team_stats_game_side_unique" UNIQUE("game_id","side"),
 	CONSTRAINT "lol_game_team_stats_game_id_lol_games_id_fk" FOREIGN KEY ("game_id") REFERENCES "public"."lol_games"("id") ON DELETE cascade ON UPDATE no action,
 	CONSTRAINT "lol_game_team_stats_entrant_id_lol_entrants_id_fk" FOREIGN KEY ("entrant_id") REFERENCES "public"."lol_entrants"("id") ON DELETE no action ON UPDATE no action

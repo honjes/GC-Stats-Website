@@ -1009,6 +1009,7 @@ export function defineLeagueTables(g: GameTables<"lol">) {
     firstBlood: boolean("first_blood").notNull().default(false),
     firstTower: boolean("first_tower").notNull().default(false),
     objectiveTimings: jsonb("objective_timings").notNull().default({}), // { [objective kind]: first time in ms }
+    dragonTypes: text("dragon_types").array(), // dragon types the team took, in the order they were taken; null for games entered by hand
   }, (t) => [
     unique("lol_game_team_stats_game_side_unique").on(t.gameId, t.side),
     index("lol_game_team_stats_entrant_id_idx").on(t.entrantId),

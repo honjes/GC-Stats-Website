@@ -10,7 +10,7 @@
  */
 
 import { unstable_cache } from "next/cache";
-import { and, asc, eq, inArray, like } from "drizzle-orm";
+import { asc, eq, inArray } from "drizzle-orm";
 import { db } from "@gc-stats/db/client";
 import { gameTables, leagueTablesOf } from "@gc-stats/db";
 import { averageSeriesLines, blueEntrantOf, draftStep, killParticipation, perMinute, seriesScoreThrough, stepSide, type LeagueSide, type SeriesAverage } from "@gc-stats/lol-stats-engine";
@@ -88,15 +88,13 @@ function runesOf(runes: unknown, names: Record<string, string>): PlayerRunes {
 
 export type LeagueSeries = { games: LeagueMatchGame[]; averages: SeriesAverage[] };
 
-function dragonTypesOf(team: { side: string; dragons: number }, dragonKills: { side: string | null; subtype: string | null }[]): (string | null)[] {
-  const types = dragonKills
-    .filter((kill) => kill.side === team.side)
-    .map((kill) => (kill.subtype ?? "").replace(/^DRAGON:/, ""));
-  return types.length === team.dragons ? types : Array.from({ length: team.dragons }, (): null => null);
+/** The dragon types a team took, as stored at import. Without a list that matches the dragon count, the types are unknown. */
+function dragonTypesOf(team: { dragons: number }, stored: string[] | null): (string | null)[] {
+  return stored !== null && stored.length === team.dragons ? stored : Array.from({ length: team.dragons }, (): null => null);
 }
 
 async function loadLeagueMatchGames(matchId: number, patch: string | null, entrants: { entrantAId: number | null; entrantBId: number | null }): Promise<LeagueSeries> {
-  const { games, gameTeamStats, gameDraft, gamePlayerStats, gameEventsRaw } = leagueTablesOf("lol");
+  const { games, gameTeamStats, gameDraft, gamePlayerStats } = leagueTablesOf("lol");
   const { people } = gameTables("lol");
 
   const gameRows = await db
@@ -118,7 +116,7 @@ async function loadLeagueMatchGames(matchId: number, patch: string | null, entra
   if (gameRows.length === 0) return { games: [], averages: [] };
   const gameIds = gameRows.map((g) => g.id);
 
-  const [teamRows, draftRows, playerRows, dragonRows, { championIconKeys: iconKeys, itemNames, runeNames }] = await Promise.all([
+  const [teamRows, draftRows, playerRows, { championIconKeys: iconKeys, itemNames, runeNames }] = await Promise.all([
     db
       .select({
         gameId: gameTeamStats.gameId,
@@ -130,6 +128,7 @@ async function loadLeagueMatchGames(matchId: number, patch: string | null, entra
         dragons: gameTeamStats.dragons,
         barons: gameTeamStats.barons,
         heralds: gameTeamStats.heralds,
+        dragonTypes: gameTeamStats.dragonTypes,
         grubs: gameTeamStats.grubs,
         gold: gameTeamStats.gold,
       })
@@ -159,11 +158,6 @@ async function loadLeagueMatchGames(matchId: number, patch: string | null, entra
       .leftJoin(people, eq(people.id, gamePlayerStats.personId))
       .where(inArray(gamePlayerStats.gameId, gameIds))
       .orderBy(asc(gamePlayerStats.id)),
-    db
-      .select({ gameId: gameEventsRaw.gameId, side: gameEventsRaw.side, subtype: gameEventsRaw.subtype })
-      .from(gameEventsRaw)
-      .where(and(inArray(gameEventsRaw.gameId, gameIds), eq(gameEventsRaw.type, "ELITE_MONSTER_KILL"), like(gameEventsRaw.subtype, "DRAGON:%")))
-      .orderBy(asc(gameEventsRaw.gameId), asc(gameEventsRaw.seq)),
     getDisplayCatalog(patch),
   ]);
 
@@ -205,7 +199,7 @@ async function loadLeagueMatchGames(matchId: number, patch: string | null, entra
         towers: team.towers,
         inhibitors: team.inhibitors,
         dragons: team.dragons,
-        dragonTypes: dragonTypesOf(team, dragonRows.filter((row) => row.gameId === game.id)),
+        dragonTypes: dragonTypesOf(team, team.dragonTypes),
         barons: team.barons,
         heralds: team.heralds,
         grubs: team.grubs,

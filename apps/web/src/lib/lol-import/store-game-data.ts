@@ -22,6 +22,7 @@ import { leagueTablesOf } from "@gc-stats/db";
 import {
   buildGameSummary,
   buildTimelineRows,
+  computeDragonTypes,
   computeFirstBlood,
   computeFirstTower,
   computeLaneDiffs,
@@ -145,6 +146,7 @@ export async function storeGameData(input: StoreGameInput): Promise<{ gameId: nu
     const firstBlood = computeFirstBlood(rows);
     const firstTower = computeFirstTower(rows);
     const objectiveTimings = computeObjectiveTimings(rows);
+    const dragonTypes = computeDragonTypes(rows);
 
     const players = summary.players.map((p) => ({ ...p, ...(p.personId === null ? undefined : laneDiffs.get(p.personId)) }));
     const teams = summary.teams.map((t) => ({
@@ -152,6 +154,7 @@ export async function storeGameData(input: StoreGameInput): Promise<{ gameId: nu
       firstBlood: firstBlood?.side === t.side,
       firstTower: firstTower?.side === t.side,
       objectiveTimings: objectiveTimings[t.side],
+      dragonTypes: dragonTypes[t.side],
     }));
 
     if (players.length) await tx.insert(gamePlayerStats).values(players);
