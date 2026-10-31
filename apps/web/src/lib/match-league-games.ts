@@ -13,7 +13,7 @@ import { unstable_cache } from "next/cache";
 import { asc, eq, inArray } from "drizzle-orm";
 import { db } from "@gc-stats/db/client";
 import { gameTables, leagueTablesOf } from "@gc-stats/db";
-import { averageSeriesLines, blueEntrantOf, draftStep, killParticipation, perMinute, seriesScoreThrough, stepSide, type LeagueSide, type SeriesAverage } from "@gc-stats/lol-stats-engine";
+import { averageSeriesLines, blueEntrantOf, draftStep, killParticipation, LEAGUE_DRAFT_STEPS, perMinute, seriesScoreThrough, stepSide, type LeagueSide, type SeriesAverage } from "@gc-stats/lol-stats-engine";
 import { MATCH_STATS_TAG, matchTag } from "@/lib/cache-tags";
 import { getDisplayCatalog } from "@/lib/data-dragon-client";
 import { lolIconUrl } from "@/lib/lol-icons";
@@ -205,7 +205,8 @@ async function loadLeagueMatchGames(matchId: number, patch: string | null, entra
         grubs: team.grubs,
         gold: team.gold,
       })),
-      draft: draft.length === 0 ? null : { blueEntrantId, steps, unplacedPicks },
+      // A draft still being filled in is not shown: only a draft with every step is.
+      draft: steps.length === LEAGUE_DRAFT_STEPS.length ? { blueEntrantId, steps, unplacedPicks } : null,
       players: playerRows
         .filter((row) => row.gameId === game.id)
         .map((row): LeagueGamePlayer => ({
@@ -239,7 +240,7 @@ async function loadLeagueMatchGames(matchId: number, patch: string | null, entra
 export function getMatchLeagueGames(matchId: number, patch: string | null, entrants: { entrantAId: number | null; entrantBId: number | null }): Promise<LeagueSeries> {
   return unstable_cache(
     () => loadLeagueMatchGames(matchId, patch, entrants),
-    ["match-league-series-v9", String(matchId), patch ?? "", String(entrants.entrantAId), String(entrants.entrantBId)],
+    ["match-league-series-v10",String(matchId), patch ?? "", String(entrants.entrantAId), String(entrants.entrantBId)],
     { tags: [matchTag(matchId), MATCH_STATS_TAG], revalidate: 86400 },
   )();
 }
