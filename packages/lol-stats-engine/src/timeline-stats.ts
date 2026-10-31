@@ -17,7 +17,7 @@ import type { LeagueFrameRow, LeagueTimelineRows } from "./timeline-rows";
 export interface LanePlayer {
   personId: number;
   side: LeagueSide;
-  role: string | null; // Riot teamPosition, null when unknown
+  role: string | null; // the player's role (resolvePlayerRoles), null when unknown
 }
 
 export interface LaneDiffs {

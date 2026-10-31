@@ -4648,7 +4648,7 @@
             "unresolvedHint": "Liez ou créez une personne pour chaque joueur non encore lié.",
             "roleLabel": "Rôle",
             "roleNone": "Aucun rôle",
-            "riotRole": "Riot : {role}",
+            "positionRole": "Les positions sur la carte suggèrent {role}",
             "alreadyStoredHere": "enregistré comme match {order} de cette série",
             "alreadyStoredElsewhere": "enregistré dans une autre série",
             "refreshGames": "Actualiser la liste des parties",

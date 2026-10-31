@@ -4640,7 +4640,7 @@
             "unresolvedHint": "Henüz bağlı olmayan her oyuncu için bir kişi bağlayın veya oluşturun.",
             "roleLabel": "Rol",
             "roleNone": "Rol yok",
-            "riotRole": "Riot: {role}",
+            "positionRole": "Harita konumlarına göre {role}",
             "alreadyStoredHere": "bu serinin {order}. maçı olarak kayıtlı",
             "alreadyStoredElsewhere": "başka bir seride kayıtlı",
             "refreshGames": "Maç listesini yenile",

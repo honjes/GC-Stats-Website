@@ -4640,7 +4640,7 @@
             "unresolvedHint": "Połącz lub utwórz osobę dla każdego gracza, który nie jest jeszcze połączony.",
             "roleLabel": "Rola",
             "roleNone": "Brak roli",
-            "riotRole": "Riot: {role}",
+            "positionRole": "Pozycje na mapie wskazują {role}",
             "alreadyStoredHere": "zapisany jako mecz {order} tej serii",
             "alreadyStoredElsewhere": "zapisany w innej serii",
             "refreshGames": "Odśwież listę gier",

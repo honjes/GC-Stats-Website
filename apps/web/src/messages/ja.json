@@ -4640,7 +4640,7 @@
             "unresolvedHint": "まだ紐づいていない各プレイヤーに、人物を紐づけるか作成してください。",
             "roleLabel": "ロール",
             "roleNone": "ロールなし",
-            "riotRole": "Riot: {role}",
+            "positionRole": "マップ上の位置では {role}",
             "alreadyStoredHere": "このシリーズの {order} 試合目として保存済み",
             "alreadyStoredElsewhere": "別のシリーズで保存済み",
             "refreshGames": "ゲーム一覧を更新",

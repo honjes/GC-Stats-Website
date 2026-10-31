@@ -4640,7 +4640,7 @@
             "unresolvedHint": "Verknüpfe oder lege für jeden Spieler, der noch nicht verknüpft ist, eine Person an.",
             "roleLabel": "Rolle",
             "roleNone": "Keine Rolle",
-            "riotRole": "Riot: {role}",
+            "positionRole": "Kartenpositionen deuten auf {role}",
             "alreadyStoredHere": "als Spiel {order} dieser Serie gespeichert",
             "alreadyStoredElsewhere": "in einer anderen Serie gespeichert",
             "refreshGames": "Spielliste aktualisieren",

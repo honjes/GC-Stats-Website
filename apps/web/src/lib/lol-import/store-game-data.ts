@@ -56,7 +56,7 @@ export interface StoreGameInput {
   /** The game being edited: its row is replaced in place, so a manual game becomes the Riot game without a second row. */
   replaceGameId?: number | null;
   championNameById: Map<number, string>;
-  /** The role of each participant: inferred from the positions, or the admin's override (resolvePlayerRoles). */
+  /** The role of each participant: the lobby role, or the admin's override (resolvePlayerRoles). */
   roleByParticipantId: Map<number, string | null>;
   /** The admin's role overrides by puuid, kept on the game so a re-import keeps them. */
   roleOverrides: Record<string, string | null>;

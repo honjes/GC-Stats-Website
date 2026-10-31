@@ -43,7 +43,8 @@ export interface RiotParticipantDto {
   riotIdTagline?: string;
   participantId: number; // 1–10
   teamId: RiotTeamId;
-  teamPosition: string; // TOP | JUNGLE | MIDDLE | BOTTOM | UTILITY | "" when unknown
+  teamPosition: string; // TOP | JUNGLE | MIDDLE | BOTTOM | UTILITY | "" when unknown; AFK or shuffled in tournament games
+  positionAssignedByMatchmaking?: string; // TOP | JUNGLE | ...; the lobby order in tournament games. Missing in older games (2025)
   championId: number; // Riot's numeric champion id; the display name comes from Data Dragon
   championName: string; // Riot's internal id, e.g. "JarvanIV"; the fallback when the id is unknown
   kills: number;

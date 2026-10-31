@@ -4644,7 +4644,7 @@
             "unresolvedHint": "Collega o crea una persona per ogni giocatore non ancora collegato.",
             "roleLabel": "Ruolo",
             "roleNone": "Nessun ruolo",
-            "riotRole": "Riot: {role}",
+            "positionRole": "Le posizioni sulla mappa suggeriscono {role}",
             "alreadyStoredHere": "salvata come partita {order} di questa serie",
             "alreadyStoredElsewhere": "salvata in un'altra serie",
             "refreshGames": "Aggiorna lista partite",

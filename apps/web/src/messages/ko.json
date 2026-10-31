@@ -4640,7 +4640,7 @@
             "unresolvedHint": "아직 연결되지 않은 선수마다 사람을 연결하거나 새로 만드세요.",
             "roleLabel": "역할",
             "roleNone": "역할 없음",
-            "riotRole": "Riot: {role}",
+            "positionRole": "맵 위치상 {role}",
             "alreadyStoredHere": "이 시리즈의 {order}번째 경기로 저장됨",
             "alreadyStoredElsewhere": "다른 시리즈에 저장됨",
             "refreshGames": "게임 목록 새로고침",

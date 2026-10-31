@@ -4640,7 +4640,7 @@
             "unresolvedHint": "اربط أو أنشئ شخصاً لكل لاعب لم يُربط بعد.",
             "roleLabel": "الدور",
             "roleNone": "بلا دور",
-            "riotRole": "Riot: {role}",
+            "positionRole": "مواقع الخريطة تشير إلى {role}",
             "alreadyStoredHere": "محفوظة كمباراة {order} في هذه السلسلة",
             "alreadyStoredElsewhere": "محفوظة في سلسلة أخرى",
             "refreshGames": "تحديث قائمة المباريات",

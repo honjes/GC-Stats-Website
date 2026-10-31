@@ -4648,7 +4648,7 @@
             "unresolvedHint": "Link or create a person for every player who is not linked yet.",
             "roleLabel": "Role",
             "roleNone": "No role",
-            "riotRole": "Riot: {role}",
+            "positionRole": "Map positions suggest {role}",
             "alreadyStoredHere": "stored as game {order} of this series",
             "alreadyStoredElsewhere": "stored in another series",
             "refreshGames": "Refresh game list",

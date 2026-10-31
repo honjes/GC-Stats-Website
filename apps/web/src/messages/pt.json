@@ -4640,7 +4640,7 @@
             "unresolvedHint": "Vincule ou crie uma pessoa para cada jogador ainda não vinculado.",
             "roleLabel": "Função",
             "roleNone": "Sem função",
-            "riotRole": "Riot: {role}",
+            "positionRole": "As posições no mapa sugerem {role}",
             "alreadyStoredHere": "salva como partida {order} desta série",
             "alreadyStoredElsewhere": "salva em outra série",
             "refreshGames": "Atualizar lista de jogos",

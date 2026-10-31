@@ -4640,7 +4640,7 @@
             "unresolvedHint": "เชื่อมหรือสร้างบุคคลให้ผู้เล่นทุกคนที่ยังไม่ได้เชื่อม",
             "roleLabel": "บทบาท",
             "roleNone": "ไม่มีบทบาท",
-            "riotRole": "Riot: {role}",
+            "positionRole": "ตำแหน่งบนแผนที่ชี้ว่าเป็น {role}",
             "alreadyStoredHere": "บันทึกเป็นเกมที่ {order} ของซีรีส์นี้แล้ว",
             "alreadyStoredElsewhere": "บันทึกในซีรีส์อื่นแล้ว",
             "refreshGames": "รีเฟรชรายการเกม",

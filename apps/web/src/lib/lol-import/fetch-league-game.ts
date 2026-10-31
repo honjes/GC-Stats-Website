@@ -19,6 +19,7 @@ import { and, eq, inArray } from "drizzle-orm";
 import { adminDb as db } from "@gc-stats/db/client";
 import { lolEntrants, lolGames, lolLeaguepediaGames, lolMatches, lolPeople, lolPersonProfiles } from "@gc-stats/db";
 import {
+  assignedRoles,
   championNameOf,
   inferRoles,
   isTournamentRealmMatchId,
@@ -26,7 +27,6 @@ import {
   missingChampionIds,
   resolvePlayerRoles,
   riotCluster,
-  roleOf,
   sideForTeamId,
   validateImport,
   type LeagueSide,
@@ -74,19 +74,16 @@ export interface PreviewPlayer {
   kills: number;
   deaths: number;
   assists: number;
-  /** The person this account is linked to, null when it is not linked yet. */
   person: { id: number; handle: string } | null;
-  /** The role the stats use: the admin's override, else the inferred one. */
   role: string | null;
-  /** The role inferred from the positions, before any override. */
-  inferredRole: string | null;
-  /** Riot's own teamPosition, shown for reference only (unreliable for esports games). */
-  riotRole: string | null;
+  /** The lobby role (positionAssignedByMatchmaking, or the lobby order for older games), before any override. */
+  assignedRole: string | null;
+  /** The role the map positions of the first minutes suggest, null when they cannot tell. Only a check: the preview shows it when it differs. */
+  positionRole: string | null;
 }
 
 export interface LeaguepediaPreview {
   game: GameRef;
-  /** How the game was loaded: fetch, renew or reprocess. Carried to the save for the activity log. */
   mode: LeaguepediaGameMode;
   riotMatchId: string;
   teams: { blue: string | null; red: string | null };
@@ -165,8 +162,9 @@ export async function prepareLeaguepediaGame(input: PrepareInput): Promise<Prepa
   if (missing.length > 0) return { ok: false, error: { kind: "unknownChampions", ids: missing } };
   const riotMatch = validation.match;
   const roleOverrides = await savedRoleOverrides(resolved.riotMatchId);
+  const assigned = assignedRoles(riotMatch);
   const inferred = inferRoles(riotMatch, validation.timeline);
-  const effective = resolvePlayerRoles(riotMatch, validation.timeline, roleOverrides);
+  const effective = resolvePlayerRoles(riotMatch, roleOverrides);
   const puuids = riotMatch.info.participants.map((p) => p.puuid);
   const linked = await linkedPeopleByPuuid(puuids);
 
@@ -198,8 +196,8 @@ export async function prepareLeaguepediaGame(input: PrepareInput): Promise<Prepa
           riotId: p.riotIdGameName ? `${p.riotIdGameName}${p.riotIdTagline ? `#${p.riotIdTagline}` : ""}` : p.puuid.slice(0, 8),
           side: sideForTeamId(p.teamId),
           role: effective.get(p.participantId) ?? null,
-          inferredRole: inferred?.get(p.participantId) ?? roleOf(p.teamPosition),
-          riotRole: p.teamPosition || null,
+          assignedRole: assigned.get(p.participantId) ?? null,
+          positionRole: inferred?.get(p.participantId) ?? null,
           championName: championNameOf(catalog.championNameById, p.championId),
           kills: p.kills,
           deaths: p.deaths,

@@ -4640,7 +4640,7 @@
             "unresolvedHint": "为每位尚未关联的选手关联或新建一个人员。",
             "roleLabel": "位置",
             "roleNone": "无位置",
-            "riotRole": "Riot：{role}",
+            "positionRole": "地图位置显示为 {role}",
             "alreadyStoredHere": "已保存为本系列第 {order} 局",
             "alreadyStoredElsewhere": "已保存在其他系列中",
             "refreshGames": "刷新对局列表",
